@@ -4,6 +4,13 @@ import (
 	"fmt"
 )
 
+func max(a, b int64) int64 {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 func binsearch(from int64, to int64, function func(int64) bool) int64 {
 	l, r := from-1, to+1
 
@@ -24,7 +31,7 @@ func main() {
 	var w, h, n int64
 	fmt.Scan(&w, &h, &n)
 
-	res := binsearch(0, 10000000000, func(size int64) bool {
+	res := binsearch(1, max(w, h)*n, func(size int64) bool {
 		return (size/w)*(size/h) >= n
 	})
 
